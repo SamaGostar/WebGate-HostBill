@@ -60,6 +60,8 @@ class zarinpalwg extends PaymentModule {
 				if($result->Status == 100 )){
 				$go = "https://www.zarinpal.com/pg/StartPay/" . $result->Authority ; 
 				header("Location: $go");
+				}else{
+					echo'ERR: '.$result['Status'];
 				}
 				switch($result->Status){
 					case '-1':
@@ -130,6 +132,7 @@ class zarinpalwg extends PaymentModule {
             
             
         } else {
+        	echo'ERR: '.$result['Status'];
              $this->logActivity(array(
                 'result' => 'Failed',
                 'output' => $_POST
